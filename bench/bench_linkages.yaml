@@ -1,0 +1,25 @@
+
+common:
+  setup: |
+         import numpy as np
+         from scipy.cluster import hierarchy as original
+         from scipy_numba.cluster import hierarchy as new
+         value = np.load('bench_cluster_data.npz')['m10k2'][:1000, :]
+  base: ro = original.linkage(value, method_name)
+  stmt: rn = new.linkage(value, method_name)
+
+linkages:
+  single:
+    setup: method_name = 'single'
+  complete:
+    setup: method_name = 'complete'
+  average:
+    setup: method_name = 'average'
+  centroid:
+    setup: method_name = 'centroid'
+  median:
+    setup: method_name = 'median'
+  ward:
+    setup: method_name = 'ward'
+  weighted:
+    setup: method_name = 'weighted'

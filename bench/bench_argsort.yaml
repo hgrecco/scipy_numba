@@ -1,0 +1,18 @@
+
+common:
+       setup: |
+              import numpy as np
+              from scipy_numba.cluster import _argsort
+       stmt: _argsort.argsort1D(x)
+       base: np.argsort(x)
+
+length100:
+       setup: x = np.load('bench_cluster_data.npz')['m100k2'][:100, 0]
+length1000:
+       setup: x = np.load('bench_cluster_data.npz')['m100k2'][:1000, 0]
+length10000:
+       setup: x = np.load('bench_cluster_data.npz')['m100k2'][:10000, 0]
+length100000:
+       setup: x = np.load('bench_cluster_data.npz')['m100k2'][:100000, 0]
+length1000000:
+       setup: x = np.load('bench_cluster_data.npz')['m100k2'][:1000000, 0]
