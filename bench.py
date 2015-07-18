@@ -197,7 +197,7 @@ def main(args=None):
             if result.base is None:
                 print('%-40s\t\t%s' % (' > '.join(result.name), humanize_time(result.time)))
             else:
-                print('%-40s\t\t%.2fx (base %s)' % (' > '.join(result.name), result.time / result.base, humanize_time(result.base)))
+                print('%-40s\t\t%.2fx (base %s)' % (' > '.join(result.name), result.base / result.time, humanize_time(result.base)))
         print()
         if folder:
             os.chdir(cwd)
